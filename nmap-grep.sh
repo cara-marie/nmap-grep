@@ -232,8 +232,8 @@ if [ "$varDoSplit" = "Y" ]; then
     varLineHost=""
     varLinePort=""
     varLineTCPUDP=""
-    varLineHost=$(echo $varLine | awk -F ',' '{print $1}')
     varLinePort=$(echo $varLine | awk -F ',' '{print $2}')
+    varLineHost="$(echo $varLine | awk -F ',' '{print $1}'):$varLinePort"
     varLineTCPUDP=$(echo $varLine | awk -F ',' '{print $3}')
     echo $varLineHost >> $varOutPath${varLinePort}-${varLineTCPUDP}-hosts.txt
   done < $varOutPath$varTempFile
